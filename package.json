@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -L ./src/app.js",
+    "up": "docker-compose build && docker-compose up"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,12 @@
   },
   "homepage": "https://github.com/brunoalbuquerquebr/desafio-calc-angular#readme",
   "devDependencies": {
-    "express": "^4.18.2"
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.2",
+    "morgan": "^1.10.0"
   }
 }
