@@ -3,7 +3,7 @@ config()
 
 import express from "express";
 import morgan from 'morgan';
-import calsRoutes from './routes/calcsRoutes.js'
+import calcsRoutes from './routes/calcsRoutes.js'
 import connectDB from './config/db.js';
 
 const PORT = process.env.APP_PORT || 4001
@@ -12,7 +12,7 @@ const app = express()
 app.use(express.json())
 app.use(morgan('dev'))
 
-app.use('/calcs', calsRoutes)
+app.use('/calcs', calcsRoutes)
 
 app.listen(PORT, () => {
     connectDB().then(() => {
