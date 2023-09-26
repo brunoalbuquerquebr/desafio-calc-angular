@@ -1,16 +1,23 @@
+import { createMessageChannel } from '../messages/messageChannel.js'
 import Calc from '../models/Calcs.js'
 
 export default {
     addCalc: async (req, res) => {
-        try {
-            const { number1, number2 } = req.body
-            const calc = await Calc.create({
-                number1,
-                number2
-            })
-            res.json({ calc })
-        } catch (error) {
-            console.log(error);
+        const messageChannel = await createMessageChannel()
+        if (messageChannel) {
+            try {
+
+                const { number1, number2 } = req.body
+                const calc = await Calc.create({
+                    number1,
+                    number2
+                })
+                res.json({ calc })
+                messageChannel.sendToQueue(process.env.QUEUE_NAME, Buffer.from(JSON.stringify(calc).toString()))
+                console.log('Message sent to queue');
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
 

@@ -19,7 +19,7 @@ services:
         command: npm run start
 
     rabbitmq:
-        image: rabbitmq:3-management
+        image: rabbitmq:3.12.4-management
         container_name: rabbitmq
         restart: always
         ports:
